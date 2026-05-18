@@ -24,7 +24,7 @@ services:
   # ── Prefect ───────────────────────────────────────────────
   prefect-orion:
     image: prefecthq/prefect:2.14.0-python3.10
-    command: prefect orion start --host 0.0.0.0
+    command: prefect server start --host 0.0.0.0
     ports:
       - "4200:4200"
     volumes:
@@ -70,6 +70,8 @@ services:
       - "3000:3000"
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
 
   # ── API Gateway ───────────────────────────────────────────
   api-gateway:
